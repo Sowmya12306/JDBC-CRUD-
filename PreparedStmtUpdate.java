@@ -7,17 +7,20 @@ import java.util.Scanner;
 
 public class PreparedStmtUpdate {
 	public static void main(String[] args) throws SQLException {
-		Connection con = null;
-		PreparedStatement ps = null;
+		// Connection con = null;
+		// PreparedStatement ps = null;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("enter the id ::");
 		int id = sc.nextInt();
 		String queryUpdate = "update Student set SNAME = 'Pooja' where SID=?";
-		try {
-			con =PreparedStmntUtil.getConnection();
-			if(con!=null) {
-				ps =con.prepareStatement(queryUpdate);
-			}if(ps!=null) {
+		//using try with resource since Statement and Connection implements Autocloseable
+		try(Connection con =PreparedStmntUtil.getConnection(); PreparedStatement con.prepareStatement(queryUpdate);)
+		{
+			// con =PreparedStmntUtil.getConnection();
+			// if(con!=null) {
+				// ps =con.prepareStatement(queryUpdate);
+			// }
+		              if(ps!=null) {
 				ps.setInt(1, id);
 				int row =ps.executeUpdate();
 				if(row==0)
@@ -29,9 +32,10 @@ public class PreparedStmtUpdate {
 			se.printStackTrace();
 		}catch(Exception ex) {
 			ex.printStackTrace();
-		}finally {
-			PreparedStmntUtil.closeConnection(null, ps, con);
 		}
+			// finally {
+			// PreparedStmntUtil.closeConnection(null, ps, con);
+		// }
 		if(sc!=null) {
 			sc.close();
 		}
