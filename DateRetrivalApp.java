@@ -27,7 +27,7 @@ public class DateRetrivalApp {
 				resultSet = pstmt.executeQuery();
 			}if(resultSet!= null) {
 			      if(resultSet.next()) {
-			    	  System.out.println("name\taddress\tgender\tdob\tdoj\tdom");
+			    	  System.out.println("name\taddress\tgender\t\tdob\t\tdoj\t\tdom");
 				String user = resultSet.getString(1);
 				String addr = resultSet.getString(2);
 				char gen = resultSet.getString(3).charAt(0);
@@ -35,7 +35,7 @@ public class DateRetrivalApp {
 				String dob = sdf.format(resultSet.getDate(4));
 				String doj = sdf.format(resultSet.getDate(5));
 				String dom = sdf.format(resultSet.getDate(6));
-				System.out.println(user + "\t"+ addr+ "\t"+gen+ "\t"+dob+ "\t"+doj+ "\t"+dom);			
+				System.out.println(user + "\t"+ addr+ "\t"+gen+ "\t\t"+dob+ "\t"+doj+ "\t"+dom);			
 			      }else {
 			    	  System.out.println("Record not found with given name :: " + name);
 			      }
