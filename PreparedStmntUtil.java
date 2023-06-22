@@ -12,7 +12,7 @@ public class PreparedStmntUtil {
 		Connection connection = null;
 		String url = "jdbc:mysql://localhost:3306/ineuron";
 		String user = "root";
-		String password = "MySQL@001";
+		String password = "";
 
 		connection = DriverManager.getConnection(url, user, password);
 		if (connection != null)
